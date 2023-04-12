@@ -1,4 +1,6 @@
-#include <iostream>
+*****Tran Ngoc Anh*****
+
+#include <iostream> 
 #include <string>
 #include "Nguoi.h"
 
@@ -51,8 +53,3 @@ void NhanVien::xuat(int n)
     cout<<"Ngay vao lam:"; ngay_vao_lam.xuat();
     cout<<"Luong:"<< luong << endl;
 }
-
-
-
-
-
