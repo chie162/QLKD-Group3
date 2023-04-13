@@ -1,4 +1,4 @@
-*****Tran Ngoc Anh*****
+*****Tran Thi Ngoc Anh*****
 
 #include <iostream> 
 #include <string>
