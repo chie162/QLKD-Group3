@@ -43,7 +43,7 @@ void NhanVien::nhap(int n)
 {
     Nguoi ::nhap();
     cout<<"Nhap ngay vao lam: "; this->ngay_vao_lam.nhap(); cin.ignore();
-    cout<<"Nhap luong:"; getline(cin, this->);
+    cout<<"Nhap luong:"; getline(cin, this->luong);
 }
 
 
