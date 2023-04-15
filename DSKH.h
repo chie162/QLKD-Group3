@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string.h>
-#include "Danhsach.h"
+#include "DanhSach.h"
 #include "KhachHang.h" 
 using namespace std;
 class DSKH:public DanhSach

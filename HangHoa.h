@@ -4,7 +4,7 @@
 #include"Nguoi.h"
 #include"Ngay.h"
 using namespace std;
-class Hanghoa
+class HangHoa
 {
 	private:
 		int id;
@@ -16,10 +16,10 @@ class Hanghoa
 		string hsd;
 	public:
 		//Khai bao ham khoi tao
-		Hanghoa(string ten_hh = "None", string xuat_xu = "None", double gia_ban = , int so_luong = 0, string nsx = "None", string hsd = "None");
+		HangHoa(string ten_hh = "None", string xuat_xu = "None", double gia_ban = , int so_luong = 0, string nsx = "None", string hsd = "None");
 		
 		//Khai bao ham huy
-		~Hanghoa();
+		~HangHoa();
 		
 		//Khai bao phuong thuc
 		void nhap(int i);
@@ -38,10 +38,10 @@ class Hanghoa
 		void set_hsd(string hsd){this->hsd = hsd; }
 };
 
-Hanghoa :: Hanghoa(string ten_hh = "None", string xuat_xu = "None", double gia_ban = , int so_luong = 0, string nsx = "None", string hsd = "None"){}
-Hanghoa :: ~Hanghoa(){}
+HangHoa :: HangHoa(string ten_hh = "None", string xuat_xu = "None", double gia_ban = , int so_luong = 0, string nsx = "None", string hsd = "None"){}
+HangHoa :: ~HangHoa(){}
 
-void Hanghoa :: nhap()
+void HangHoa :: nhap()
 {
 	cout<<"Nhap id:";cin>>id;
 	cout<<"Nhap ten hang hoa:";cin>>ten_hh;
@@ -51,7 +51,7 @@ void Hanghoa :: nhap()
 	cout<<"Nhap ngay san xuat:";cin>>nsx;
 	cout<<"Nhap han su dung:";cin>>hsd;
 }
-void Hanghoa :: xuat()
+void HangHoa :: xuat()
 {
 	cout<<"ID:"<<id<<endl;
 	cout<<"Ten hang hoa:"<<ten_hh<<endl;

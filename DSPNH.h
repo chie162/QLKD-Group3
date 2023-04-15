@@ -1,7 +1,7 @@
 /****************Nguoi thuc hien Tran Le Ngoc Chau********************/
 #include<iostream>
 #include<string.h>
-#include"Danhsach.cpp"
+#include"DanhSach.h"
 using namespace std;
 class DSPNH : public 
 {
