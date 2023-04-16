@@ -23,8 +23,7 @@ private:
 	double tong_tien;
 	double thue;
 public:
-	HoaDon();
-	HoaDon(int Ma_hd, Ngay Ngay_xuat, string Ten_kh, string Ten_nv, string *Ten_hh, int Sl_hang, int *Sl_mua, double *Gia_ban,  double Tong_tien, double Thue);
+	HoaDon(int Ma_hd = 0, Ngay Ngay_xuat, string Ten_kh = "None", string Ten_nv = "None", string *Ten_hh, int Sl_hang = 0, int *Sl_mua, double *Gia_ban,  double Tong_tien = 0, double Thue = 0);
 	~HoaDon();
 
 	void nhap();
@@ -44,29 +43,9 @@ public:
 
 };
 
-HoaDon::HoaDon()
+HoaDon(int Ma_hd = 0, Ngay Ngay_xuat, string Ten_kh = "None", string Ten_nv = "None", string *Ten_hh, int Sl_hang = 0, int *Sl_mua, double *Gia_ban,  double Tong_tien = 0, double Thue = 0)
 {
-	ma_hd = 0;
-	ten_kh = ten_nv = "";
-	ten_hh = new string[sl_hang + 1];
-	tong_tien = thue = 0;
-	sl_hang = -1;
-	sl_mua = new int[sl_hang + 1];
-	gia_ban = new double[sl_hang + 1];
-}
-
-HoaDon::HoaDon(int Ma_hd, Ngay Ngay_xuat, string Ten_kh, string Ten_nv, string* Ten_hh, int Sl_hang, int* Sl_mua, double* Gia_ban, double Tong_tien, double Thue)
-{
-	ma_hd = Ma_hd;
-	ngay_xuat = Ngay_xuat;
-	ten_kh = Ten_kh;
-	ten_nv = Ten_nv;
-	ten_hh = Ten_hh;
-	sl_mua = Sl_mua;
-	gia_ban = Gia_ban;
-	sl_hang = Sl_hang;
-	tong_tien = Tong_tien;
-	thue = Thue;
+	
 }
 
 HoaDon::~HoaDon()
