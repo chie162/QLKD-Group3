@@ -14,8 +14,7 @@ private:
 	int so_luong;
 	double gia_mua;
 public:
-	PhieuNhapHang();
-	PhieuNhapHang(int Ma_phieu, Ngay Ngay_nhap, string Ten_hh, string Ten_ncc, int So_luong, double Gia_mua);
+	PhieuNhapHang(int Ma_phieu = 0, Ngay Ngay_nhap, string Ten_hh = "None", string Ten_ncc = "None", int So_luong = 0, double Gia_mua = 0);
 	~PhieuNhapHang();
 
 	void nhap();
@@ -30,20 +29,9 @@ public:
 	void set_so_luong(HangHoa HH);
 };
 
-PhieuNhapHang::PhieuNhapHang()
+PhieuNhapHang::PhieuNhapHang(int Ma_phieu = 0, Ngay Ngay_nhap, string Ten_hh = "None", string Ten_ncc = "None", int So_luong = 0, double Gia_mua = 0);
 {
-	ma_phieu = 0;
-	ten_hh = ten_ncc = "";
-	so_luong = gia_mua = 0;
-}
-PhieuNhapHang::PhieuNhapHang(int Ma_phieu, Ngay Ngay_nhap, string Ten_hh, string Ten_ncc, int So_luong, double Gia_mua)
-{
-	ma_phieu = Ma_phieu;
-	ngay_nhap = Ngay_nhap;
-	ten_hh = Ten_hh;
-	ten_ncc = Ten_ncc;
-	so_luong = So_luong;
-	gia_mua = Gia_mua;
+	
 }
 PhieuNhapHang::~PhieuNhapHang() {};
 
