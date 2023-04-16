@@ -18,6 +18,7 @@ class DSNV
         void nhap();
         void xuat();
         void xem_dsnv(int n);
+        void nhap1nv();
         void xem_luongnv(int i);
 }; 
 
@@ -32,32 +33,32 @@ DSNV::~DSNV()
     delete[] NV; 
 }
 
-void DSNV::nhap()
+void DSNV::nhap(int i)
 {
-    for (int i=0; i <= size; i++)
+    for (int i=0; i < size; i++)
     {
         NV[i].nhap();
     }
 }
-void DSNV::xuat()
+void DSNV::xuat(int i)
 {
-    for (int i=0; i <= size; i++)
+    for (int i=0; i < size; i++)
     {
         NV[i].xuat();
     }
 }
-void DSNV::xem_dsnv()
+void DSNV::xem_dsnv(int n)
 {
-    for (int i=0; i <= size; i++)
+    for (int i=0; i < size; i++)
     {
         NV[i].nhap1nv();
         NV[i].xuat1nv();
     }
 }
-void DSNV::xem_luongnv()
+void DSNV::xem_luongnv(int i)
 {
     int m=0; 
-    for(int i=0; i<= size; i++)
+    for(int i=0; i < size; i++)
     {
         if(NV[i].luong>=5000000)
         {
