@@ -30,7 +30,7 @@ DSNV::DSNV(int n)
 
 DSNV::~DSNV()
 {
-    delete[] danh_sach; 
+    
 }
 
 void DSNV::nhap(int i)
