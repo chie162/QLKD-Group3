@@ -1,4 +1,5 @@
 /****************Người thực hiện: Tái Hồng Chi********************/
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -19,7 +20,7 @@ class Ngay
         void xuat();
 };
 
-Ngay::Ngay(int ngay = 1, int thang = 1, int nam = 2023) {}
+Ngay::Ngay(int ngay, int thang, int nam) {}
 
 Ngay::~Ngay() {}
 

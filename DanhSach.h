@@ -1,4 +1,5 @@
 /****************Người thực hiện: Tái Hồng Chi********************/
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -10,12 +11,13 @@ using namespace std;
 //Định nghĩa class
 class DanhSach
 {
-    private:
+    protected:
         //Thuộc tính
         Nguoi *danh_sach = nullptr;
         int size = 0;
     public:
         //Khai báo hàm khởi tạo
+        DanhSach();
         DanhSach(int n);
         ~DanhSach();
 
@@ -27,6 +29,7 @@ class DanhSach
 };
 
 //Định nghĩa hàm khởi tạo
+DanhSach::DanhSach() {}
 DanhSach::DanhSach(int n)
 {
     danh_sach = new Nguoi[n];
@@ -71,14 +74,64 @@ void DanhSach::xuat()
 
 void DanhSach::chinh_sua()
 {
-    string ten_temp;
-    cout << "Nhap ho va ten nguoi muon chinh sua thong tin: "; cin >> ten_temp;
+    int id_temp;
+    cout << "Nhap ID nguoi muon chinh sua thong tin: "; cin >> id_temp;
     for(int i = 0; i < size; i++)
     {
-        if(danh_sach[i].get_ten() == ten_temp)
+        if(danh_sach[i].get_id() == id_temp)
         {
-            danh_sach[i].set_ten(ten_temp);
-            //return 0;
+            danh_sach[i].xuat(i + 1);
+            
+            int lua_chon = 0;
+            cout << "Nhap thong tin can sua tuong ung voi cac con so duoi day:" << endl;
+            cout << "1. ID" << endl;
+            cout << "2. Ho va ten" << endl;
+            cout << "3. SDT" << endl;
+            cout << "4. Gioi tinh" << endl;
+            cout << "5. Ngay sinh" << endl;
+            cout << "6. Dia chi" << endl;
+            cin >> lua_chon;
+
+            switch(lua_chon) 
+            {
+            case 1: 
+                {
+                int id_moi;
+                cout << "Nhap ID moi: "; cin >> id_moi; danh_sach[i].set_id(id_moi);
+                break;
+                }
+            case 2:
+                {
+                string ten_moi;
+                cout << "Nhap ho va ten moi: "; cin >> ten_moi; danh_sach[i].set_ten(ten_moi);
+                break;
+                }
+            case 3:
+                {
+                string sdt_moi;
+                cout << "Nhap SDT moi: "; cin >> sdt_moi; danh_sach[i].set_sdt(sdt_moi);
+                break;
+                }
+            case 4:
+                {string gioi_tinh_moi;
+                cout << "Nhap gioi tinh moi: "; cin >> gioi_tinh_moi; danh_sach[i].set_gioi_tinh(gioi_tinh_moi);
+                break;}
+            case 5:
+                {string ngay_sinh_moi;
+                cout << "Nhap ngay sinh moi: "; cin >> ngay_sinh_moi; danh_sach[i].set_ngay_sinh(ngay_sinh_moi);
+                break;}
+            case 6:
+                {string dia_chi_moi;
+                cout << "Nhap dia chi moi: "; cin >> dia_chi_moi; danh_sach[i].set_dia_chi(dia_chi_moi);
+                break;}
+            //default:
+                // code block
+            }
+
+            cout << "========\nThong tin vua cap nhat: \n" << endl;
+            danh_sach[i].xuat(i + 1);
+            break;
         }
-    } 
+
+    }
 }
