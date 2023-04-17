@@ -101,11 +101,11 @@ void PhieuNhapHang::luu_hang_hoa(vector<HangHoa> &danh_sach_hang_cu) {
                 if (danh_sach_hang_cu[j].get_gia_ban() < danh_sach_hang_hoa[i].get_gia_ban() * 1.4) {
                     danh_sach_hang_cu[j].set_gia_ban(danh_sach_hang_hoa[i].get_gia_ban() * 1.4);
                 }
-            } else {
                 flag = true;
+                break;
             }
         }
-        if (flag == true) {
+        if (flag == false) {
             HangHoa temp = danh_sach_hang_hoa[i];
             temp.set_gia_ban(temp.get_gia_ban() * 1.4);
             danh_sach_hang_cu.push_back(temp);
