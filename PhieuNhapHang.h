@@ -108,7 +108,7 @@ void PhieuNhapHang::luu_hang_hoa(vector<HangHoa> &danh_sach_hang_cu) {
         if (flag == true) {
             HangHoa temp = danh_sach_hang_hoa[i];
             temp.set_gia_ban(temp.get_gia_ban() * 1.4);
-            danh_sach_hang_cu.push_back(danh_sach_hang_hoa[i]);
+            danh_sach_hang_cu.push_back(temp);
         }
     }
 }
