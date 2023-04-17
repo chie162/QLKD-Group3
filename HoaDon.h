@@ -22,8 +22,8 @@ class HoaDon {
 		void tinh_tong_tien();
 		void tinh_thue();
 		void them_hang_hoa(HangHoa hang_hoa);
-		void xoa_hang_hoa(string ma_hang_hoa);
-		void sua_hang_hoa(string ma_hang_hoa, HangHoa hang_hoa);
+		// void xoa_hang_hoa(string ma_hang_hoa);
+		// void sua_hang_hoa(string ma_hang_hoa, HangHoa hang_hoa);
 		void luu_hoa_don();
 };
 
@@ -85,23 +85,23 @@ void HoaDon::them_hang_hoa(HangHoa hang_hoa) {
 	danh_sach_hang_hoa.push_back(hang_hoa);
 }
 
-void HoaDon::xoa_hang_hoa(string ma_hang_hoa) {
-	for (int i = 0; i < danh_sach_hang_hoa.size(); i++) {
-		if (danh_sach_hang_hoa[i].get_ma_hh() == ma_hang_hoa) {
-			danh_sach_hang_hoa.erase(danh_sach_hang_hoa.begin() + i);
-			break;
-		}
-	}
-}
+// void HoaDon::xoa_hang_hoa(string ma_hang_hoa) {
+// 	for (int i = 0; i < danh_sach_hang_hoa.size(); i++) {
+// 		if (danh_sach_hang_hoa[i].get_ma_hh() == ma_hang_hoa) {
+// 			danh_sach_hang_hoa.erase(danh_sach_hang_hoa.begin() + i);
+// 			break;
+// 		}
+// 	}
+// }
 
-void HoaDon::sua_hang_hoa(string ma_hang_hoa, HangHoa hang_hoa) {
-	for (int i = 0; i < danh_sach_hang_hoa.size(); i++) {
-		if (danh_sach_hang_hoa[i].get_ma_hh() == ma_hang_hoa) {
-			danh_sach_hang_hoa[i] = hang_hoa;
-			break;
-		}
-	}
-}
+// void HoaDon::sua_hang_hoa(string ma_hang_hoa, HangHoa hang_hoa) {
+// 	for (int i = 0; i < danh_sach_hang_hoa.size(); i++) {
+// 		if (danh_sach_hang_hoa[i].get_ma_hh() == ma_hang_hoa) {
+// 			danh_sach_hang_hoa[i] = hang_hoa;
+// 			break;
+// 		}
+// 	}
+// }
 
 void HoaDon::luu_hoa_don() {
 	ofstream file_out;
