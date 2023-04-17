@@ -1,204 +1,124 @@
-/****************Người thực hiện: Nguyễn Khánh Chi********************/
-
+#pragma once
 #include <iostream>
-#include <string>
-#include "Ngay.h"
 #include "HangHoa.h"
-#include "TaiChinh.h"
-#include "KhachHang.h"
+#include <fstream>
 
 using namespace std;
 
-class HoaDon :public HangHoa
-{
-private:
-	int ma_hd; 
-	Ngay ngay_xuat;
-	string ten_kh;
-	string ten_nv;
-	string *ten_hh;
-	int sl_hang;    // số loại hàng trong hóa đơn 
-	int *sl_mua;     // số lượng mua của mỗi mặt hàng
-	double *gia_ban;
-	double tong_tien;
-	double thue;
-public:
-	HoaDon();
-	HoaDon(int Ma_hd, Ngay Ngay_xuat, string Ten_kh, string Ten_nv, string *Ten_hh, int Sl_hang, int *Sl_mua, double *Gia_ban,  double Tong_tien, double Thue);
-	~HoaDon();
-
-	void nhap();
-	void ktra_sl(HangHoa HH);
-	void xuat();
-
-	void set_so_luong(HangHoa HH);
-	double get_tong_tien();
-	double get_thue();
-	int get_ngay_xuat();
-	int get_thang_xuat();
-	int get_nam_xuat();
-
-	void update_doanh_thu(TaiChinh DT);
-	void update_chi_phi(TaiChinh CP);
-	void update_tien_kh_chi(KhachHang KH);
-
+class HoaDon {
+	private:
+		string ma_hoa_don;
+		string ngay_tao;
+		string id_khach_hang;
+		string id_nhan_vien;
+		double tong_tien;
+		double thue;
+		vector<HangHoa> danh_sach_hang_hoa;
+	public:
+		HoaDon();
+		~HoaDon();
+		void nhap();
+		void xuat();
+		void tinh_tong_tien();
+		void tinh_thue();
+		void them_hang_hoa(HangHoa hang_hoa);
+		void xoa_hang_hoa(string ma_hang_hoa);
+		void sua_hang_hoa(string ma_hang_hoa, HangHoa hang_hoa);
+		void luu_hoa_don();
 };
 
-HoaDon::HoaDon()
-{
-	ma_hd = 0;
-	ten_kh = ten_nv = "";
-	ten_hh = new string[sl_hang + 1];
-	tong_tien = thue = 0;
-	sl_hang = -1;
-	sl_mua = new int[sl_hang + 1];
-	gia_ban = new double[sl_hang + 1];
+HoaDon::HoaDon() {
+	ma_hoa_don = "";
+	ngay_tao = "";
+	id_khach_hang = "";
+	id_nhan_vien = "";
+	tong_tien = 0;
+	thue = 0;
 }
 
-HoaDon::HoaDon(int Ma_hd, Ngay Ngay_xuat, string Ten_kh, string Ten_nv, string* Ten_hh, int Sl_hang, int* Sl_mua, double* Gia_ban, double Tong_tien, double Thue)
-{
-	ma_hd = Ma_hd;
-	ngay_xuat = Ngay_xuat;
-	ten_kh = Ten_kh;
-	ten_nv = Ten_nv;
-	ten_hh = Ten_hh;
-	sl_mua = Sl_mua;
-	gia_ban = Gia_ban;
-	sl_hang = Sl_hang;
-	tong_tien = Tong_tien;
-	thue = Thue;
+HoaDon::~HoaDon() {
 }
 
-HoaDon::~HoaDon()
-{
-	delete ten_hh, sl_mua, gia_ban;
+void HoaDon::nhap() {
+	cout << "Nhap ma hoa don: ";
+	cin >> ma_hoa_don;
+	cout << "Nhap ngay tao: ";
+	cin >> ngay_tao;
+	cout << "Nhap id khach hang: ";
+	cin >> id_khach_hang;
+	cout << "Nhap id nhan vien: ";
+	cin >> id_nhan_vien;
 }
 
-void HoaDon::nhap()
-{
-	cout << "Nhap ma hoa don: "; cin >> ma_hd;
-	cout << "Nhap ngay xuat: " << endl;
-	ngay_xuat.nhap();
-	cin.ignore();
-	cout << "Nhap ten khach hang: "; getline(cin, ten_kh);
-	cout << "Nhap ten nhan vien: "; getline(cin, ten_nv);
-	cout << "Nhap so loai hang trong hoa don: ";
-	cin >> sl_hang; cin.ignore();
-	ten_hh = new string[sl_hang + 1];
-	sl_mua = new int[sl_hang + 1];
-	gia_ban = new double[sl_hang + 1];
-	for (int i = 1; i <= sl_hang; i++)
-	{
-		cout << "Hang thu " << i << endl;
-		cout << "Nhap ten hang: "; getline(cin, ten_hh[i]);
-		cout << "Nhap so luong: "; cin >> sl_mua[i];
-		cout << "Nhap gia: "; cin >> gia_ban[i];
-		cin.ignore();
+void HoaDon::xuat() {
+	cout << "Ma hoa don: " << ma_hoa_don << endl;
+	cout << "Ngay tao: " << ngay_tao << endl;
+	cout << "Id khach hang: " << id_khach_hang << endl;
+	cout << "Id nhan vien: " << id_nhan_vien << endl;
+	cout << "Danh sach mua: " << endl;
+	cout << left << setw(10) << "Ma HH";
+	cout << left << setw(30) << "Ten HH";
+	cout << left << setw(10) << "Xuat xu";
+	cout << left << setw(20) << "Gia ban";
+	cout << left << setw(10) << "So luong" << endl;
+	for (int i = 0; i < danh_sach_hang_hoa.size(); i++) {
+		danh_sach_hang_hoa[i].xuat();
 	}
-	cout << endl;
+	tinh_tong_tien();
+	tinh_thue();
+	cout << "Tong tien: " << tong_tien << "000 VND" << endl;
+	cout << "Thue: " << thue << "000 VND" << endl;
 }
 
-// Ktra số lượng trong kho dựa vào tên hàng hóa, nếu không đủ số lượng khách hàng 
-// cần thì in ra màn hình số lượng trong kho và nhập lại số lượng
-
-void HoaDon::ktra_sl(HangHoa HH)
-{
-	for (int i = 1; i <= this->sl_hang; i++)
-	{
-		if (HH.get_ten_hh() == this->ten_hh[i])
-			if (HH.get_sl() < this->sl_mua[i])
-			{
-				cout << "Hang hoa" << i << "khong du so luong!" << endl;
-				cout << "So luong trong kho: " << HH.get_sl() << endl;
-				cout << "Nhap lai so luong hang hoa " << i << endl;
-				cout << "So luong: "; cin >> sl_mua[i];
-			}
+void HoaDon::tinh_tong_tien() {
+	tong_tien = 0;
+	for (int i = 0; i < danh_sach_hang_hoa.size(); i++) {
+		tong_tien += danh_sach_hang_hoa[i].get_gia_ban() * danh_sach_hang_hoa[i].get_so_luong();
 	}
 }
 
-void HoaDon::xuat()
-{
-	cout << "XAC NHAN HOA DON: " << endl;
-	cout << endl;
-	cout << "Ma hoa don: " << ma_hd << endl;
-	cout << "Ngay xuat: " << endl; ngay_xuat.xuat();
-	cout << "Ten khach hang: " << ten_kh << endl;
-	cout << "Ten nhan vien: " << ten_nv << endl;
-	cout << endl;
-	cout << "Danh sach mua hang: " << endl;
-	for (int i = 1; i <= sl_hang; i++)
-	{
-		cout << endl;
-		cout << "Hang hoa thu " << i << endl;
-		cout << "Ten: " << ten_hh[i] << endl;
-		cout << "So luong: " << sl_mua[i] << endl;
-		cout << "Gia: " << gia_ban[i] << endl;
-		tong_tien = tong_tien + gia_ban[i] * sl_mua[i];
-		thue = tong_tien * 10 / 100;
-	}
-	cout << endl;
-	cout << "Tong tien: " << tong_tien << endl;
-	cout << "Thue: " << thue << endl;
+void HoaDon::tinh_thue() {
+	thue = tong_tien * 0.1;
 }
 
-double HoaDon::get_tong_tien()
-{
-	return this->tong_tien;
-}
-double HoaDon::get_thue()
-{
-	return this->thue;
+void HoaDon::them_hang_hoa(HangHoa hang_hoa) {
+	danh_sach_hang_hoa.push_back(hang_hoa);
 }
 
-// Hàm lấy ra ngày, tháng, năm của ngày xuất hóa đơn
-int HoaDon::get_ngay_xuat()
-{
-	return ngay_xuat.get_ngay(); // Hàm get ngày của class Ngay
-}
-int HoaDon::get_thang_xuat()
-{
-	return ngay_xuat.get_thang();
-}
-int HoaDon::get_nam_xuat()
-{
-	return ngay_xuat.get_nam();
-}
-
-// Hàm set_so_luong cập nhật lại số lượng trong kho
-void HoaDon::set_so_luong(HangHoa HH)
-{
-	int x;
-	for (int i = 1; i <= this->sl_hang; i++)
-	{
-		if (HH.get_ten_hh() == this->ten_hh[i])
-		{
-			x = HH.get_sl() - this->sl_mua[i];
+void HoaDon::xoa_hang_hoa(string ma_hang_hoa) {
+	for (int i = 0; i < danh_sach_hang_hoa.size(); i++) {
+		if (danh_sach_hang_hoa[i].get_ma_hh() == ma_hang_hoa) {
+			danh_sach_hang_hoa.erase(danh_sach_hang_hoa.begin() + i);
+			break;
 		}
 	}
-	HH.set_so_luong(x);  // Hàm set_so_luong của class HangHoa
 }
 
-// Hàm cập nhật lại doanh thu, chi phí (thuế)
-void HoaDon::update_doanh_thu(TaiChinh DT)
-{
-	double x;
-	x = DT.get_doanh_thu() + this->get_tong_tien();
-	DT.set_doanh_thu(x);
-}
-void HoaDon::update_chi_phi(TaiChinh CP) // Hàm get, set doanh thu của class TaiChinh
-{
-	double x;
-	x = CP.get_chi_phi() + this->get_thue(); //Hàm get, set chi phi của class TaiChinh
-	CP.set_chi_phi(x);
-}
-
-// hàm tăng số tiền đã chi của khách hàng từ tên khách hàng trong hóa đơn
-void HoaDon::update_tien_kh_chi(KhachHang KH) // Hàm get, set của class KhachHang
-{
-	if (KH.get_ten_kh() == this->ten_kh)
-	{
-		double x;
-		x = KH.get_so_tien_da_chi() + this->get_tong_tien();
-		KH.set_so_tien_da_chi(x);
+void HoaDon::sua_hang_hoa(string ma_hang_hoa, HangHoa hang_hoa) {
+	for (int i = 0; i < danh_sach_hang_hoa.size(); i++) {
+		if (danh_sach_hang_hoa[i].get_ma_hh() == ma_hang_hoa) {
+			danh_sach_hang_hoa[i] = hang_hoa;
+			break;
+		}
 	}
+}
+
+void HoaDon::luu_hoa_don() {
+	ofstream file_out;
+	file_out.open("hoa_don.txt", ios::app);
+	file_out << "Ma hoa don: " << ma_hoa_don << endl;
+	file_out << "Ngay tao: " << ngay_tao << endl;
+	file_out << "ID khach hang: " << id_khach_hang << endl;
+	file_out << "ID nhan vien: " << id_nhan_vien << endl;
+	file_out << "So loai san pham mua: " << danh_sach_hang_hoa.size() << endl;
+	for (int i = 0; i < danh_sach_hang_hoa.size(); i++) {
+		file_out << danh_sach_hang_hoa[i].get_ma_hh() << " ";
+		file_out << danh_sach_hang_hoa[i].get_ten_hh() << " ";
+		file_out << danh_sach_hang_hoa[i].get_gia_ban() << " ";
+		file_out << danh_sach_hang_hoa[i].get_so_luong() << endl;
+	}
+	file_out << "Tong tien: " << tong_tien << "000 VND" << endl;
+	file_out << "Thue: " << thue << "000 VND" << endl;
+	file_out << "----------------------------------------" << endl;
+	file_out.close();
 }

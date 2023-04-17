@@ -1,63 +1,130 @@
-/****************Nguoi thuc hien Tran Le Ngoc Chau********************/
-#include<iostream>
-#include<string.h>
-#include"Nguoi.h"
-#include"Ngay.h"
+#pragma once
+
+#include <iostream>
+#include <iomanip>
+
 using namespace std;
+
 class HangHoa
 {
 	private:
-		int id;
+		string ma_hh;
 		string ten_hh;
 		string xuat_xu;
-		double gia_ban;
+		double gia_ban; //nghin VND
 		int so_luong;
-		string nsx;
-		string hsd;
 	public:
-		//Khai bao ham khoi tao
-		HangHoa(string ten_hh = "None", string xuat_xu = "None", double gia_ban = , int so_luong = 0, string nsx = "None", string hsd = "None");
-		
-		//Khai bao ham huy
+		HangHoa();
+		HangHoa(string Ma_hh, string Ten_hh, string Xuat_xu, double Gia_ban, int So_luong);
 		~HangHoa();
-		
-		//Khai bao phuong thuc
-		void nhap(int i);
-		void xuat(int i);
-		void chinh_sua(int i);
-		
-		int get_id(){return this -> id; }
-		string get_ten_hh(){return this->ten_hh}
-		
-		void set_id(int id){this -> id = id; }
-		void set_ten_hh(string ten_hh){this -> ten_hh = ten_hh; }
-		void set_xuat_xu(string xuat_xu){this -> xuat_xu = xuat_xu; }
-		void set_gia_ban(double gia_ban){this -> gia_ban = gia_ban; }
-		void set_so_luong(int so_luong){this -> so_luong = so_luong; }
-		void set_nsx(string nsx){this -> nsx = nsx; }
-		void set_hsd(string hsd){this->hsd = hsd; }
+
+		void nhap();
+		void xuat();
+
+		string get_ma_hh();
+		string get_ten_hh();
+		string get_xuat_xu();
+		double get_gia_ban();
+		int get_so_luong();
+
+		void set_ma_hh(string Ma_hh);
+		void set_ten_hh(string Ten_hh);
+		void set_xuat_xu(string Xuat_xu);
+		void set_gia_ban(double Gia_ban);
+		void set_so_luong(int So_luong);
 };
 
-HangHoa :: HangHoa(string ten_hh = "None", string xuat_xu = "None", double gia_ban = , int so_luong = 0, string nsx = "None", string hsd = "None"){}
-HangHoa :: ~HangHoa(){}
-
-void HangHoa :: nhap()
+HangHoa::HangHoa()
 {
-	cout<<"Nhap id:";cin>>id;
-	cout<<"Nhap ten hang hoa:";cin>>ten_hh;
-	cout<<"Nhap xuat xu hang hoa";cin>>xuat_xu;
-	cout<<"Nhap gia ban hang hoa";cin>>gia_ban;
-	cout<<"Nhap so luong hang hoa";cin>>so_luong;
-	cout<<"Nhap ngay san xuat:";cin>>nsx;
-	cout<<"Nhap han su dung:";cin>>hsd;
+	ma_hh = "";
+	ten_hh = "";
+	xuat_xu = "";
+	gia_ban = 0;
+	so_luong = 0;
 }
-void HangHoa :: xuat()
+
+HangHoa::HangHoa(string Ma_hh, string Ten_hh, string Xuat_xu, double Gia_ban, int So_luong)
 {
-	cout<<"ID:"<<id<<endl;
-	cout<<"Ten hang hoa:"<<ten_hh<<endl;
-	cout<<"Xuat xu:"<<xuat_xu<<endl;
-	cout<<"Gia:"<<gia_ban<<endl;
-	cout<<"So luong:"<<so_luong<<endl;
-	cout<<"Ngay san xuat:"<<nsx<<endl;
-	cout<<"Han su dung:"<<hsd<<endl;
+	ma_hh = Ma_hh;
+	ten_hh = Ten_hh;
+	xuat_xu = Xuat_xu;
+	gia_ban = Gia_ban;
+	so_luong = So_luong;
+}
+
+HangHoa::~HangHoa()
+{
+}
+
+void HangHoa::nhap()
+{
+	cout << "Nhap ma hang: ";
+	cin >> ma_hh;
+	cout << "Nhap ten hang: ";
+	cin >> ten_hh;
+	cout << "Nhap xuat xu: ";
+	cin >> xuat_xu;
+	cout << "Nhap gia ban: ";
+	cin >> gia_ban;
+	cout << "Nhap so luong: ";
+	cin >> so_luong;
+}
+
+void HangHoa::xuat()
+{
+	cout << left << setw(10) << ma_hh;
+	cout << left << setw(30) << ten_hh;
+	cout << left << setw(10) << xuat_xu;
+	cout << left << setw(20) << to_string(int(gia_ban * 1000)) + "VND";
+	cout << left << setw(10) << so_luong << endl;
+}
+
+string HangHoa::get_ma_hh()
+{
+	return ma_hh;
+}
+
+string HangHoa::get_ten_hh()
+{
+	return ten_hh;
+}
+
+string HangHoa::get_xuat_xu()
+{
+	return xuat_xu;
+}
+
+double HangHoa::get_gia_ban()
+{
+	return gia_ban;
+}
+
+int HangHoa::get_so_luong()
+{
+	return so_luong;
+}
+
+void HangHoa::set_ma_hh(string Ma_hh)
+{
+	ma_hh = Ma_hh;
+}
+
+void HangHoa::set_ten_hh(string Ten_hh)
+{
+	ten_hh = Ten_hh;
+}
+
+void HangHoa::set_xuat_xu(string Xuat_xu)
+{
+	xuat_xu = Xuat_xu;
+}
+
+void HangHoa::set_gia_ban(double Gia_ban)
+{
+	gia_ban = Gia_ban;
+}
+
+void HangHoa::set_so_luong(int So_luong)
+{
+	so_luong = So_luong;
 }
