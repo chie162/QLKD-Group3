@@ -8,6 +8,7 @@
 
 #include "HoaDon.h"
 #include "HangHoa.h"
+#include "PhieuNhapHang.h"
 
 using namespace std;
 
@@ -63,8 +64,28 @@ void do_selection_1(vector<HangHoa> &danh_sach_hang_hoa) {
     } while (lua_chon != 2);
 }
 
-void do_selection_2() {
-
+void do_selection_2(vector<HangHoa> &danh_sach_hang_hoa) {
+    int lua_chon = -1;
+    PhieuNhapHang phieu_nhap_hang_moi;
+    phieu_nhap_hang_moi.nhap();
+    do {
+        phieu_nhap_hang_moi.xuat();
+        cout << "*****Nhap hang*****" << endl;
+        cout << "1. Nhap hang" << endl;
+        cout << "2. Xac nhan phieu nhap hang" << endl;
+        cout << "Nhap lua chon: ";
+        cin >> lua_chon;
+        switch (lua_chon) {
+            case 1:
+                phieu_nhap_hang_moi.them_hang_hoa();
+                break;
+            case 2:
+                phieu_nhap_hang_moi.xuat();
+                phieu_nhap_hang_moi.luu_hang_hoa(danh_sach_hang_hoa);
+                phieu_nhap_hang_moi.luu_phieu_nhap_hang();
+                break;
+        }
+    } while (lua_chon != 2);
 }
 
 void do_selection_3() {
@@ -116,7 +137,8 @@ int main()
                 update_dshh(data_hang_hoa, danh_sach_hang_hoa);
                 break;
             case 2: 
-                do_selection_2();
+                do_selection_2(danh_sach_hang_hoa);
+                update_dshh(data_hang_hoa, danh_sach_hang_hoa);
                 break;
             case 3:
                 do_selection_3();
