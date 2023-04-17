@@ -94,6 +94,7 @@ void PhieuNhapHang::luu_phieu_nhap_hang() {
 
 void PhieuNhapHang::luu_hang_hoa(vector<HangHoa> &danh_sach_hang_cu) {
     for (int i = 0; i < danh_sach_hang_hoa.size(); i++) {
+        bool flag = false;
         for (int j = 0; j < danh_sach_hang_cu.size(); j++) {
             if (danh_sach_hang_hoa[i].get_ma_hh() == danh_sach_hang_cu[j].get_ma_hh()) {
                 danh_sach_hang_cu[j].set_so_luong(danh_sach_hang_cu[j].get_so_luong() + danh_sach_hang_hoa[i].get_so_luong());
@@ -101,10 +102,13 @@ void PhieuNhapHang::luu_hang_hoa(vector<HangHoa> &danh_sach_hang_cu) {
                     danh_sach_hang_cu[j].set_gia_ban(danh_sach_hang_hoa[i].get_gia_ban() * 1.4);
                 }
             } else {
-                HangHoa temp = danh_sach_hang_hoa[i];
-                temp.set_gia_ban(temp.get_gia_ban() * 1.4);
-                danh_sach_hang_cu.push_back(temp);
+                flag = true;
             }
+        }
+        if (flag == true) {
+            HangHoa temp = danh_sach_hang_hoa[i];
+            temp.set_gia_ban(temp.get_gia_ban() * 1.4);
+            danh_sach_hang_cu.push_back(danh_sach_hang_hoa[i]);
         }
     }
 }
