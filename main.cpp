@@ -205,12 +205,94 @@ void do_selection_3(vector<NhanVien> &danh_sach_nhan_vien, vector<KhachHang> &da
     } while (lua_chon != 0);
 }
 
-void do_selection_4() {
-
+void show_dshh(vector<HangHoa> danh_sach_hang_hoa) {
+    for (int i = 0; i < danh_sach_hang_hoa.size(); i++) {
+        danh_sach_hang_hoa[i].xuat();
+    }
 }
 
-void do_selection_5() {
+void do_selection_4(vector<NhanVien> danh_sach_nhan_vien, 
+                    vector<KhachHang> danh_sach_khach_hang,
+                    vector<HangHoa> danh_sach_hang_hoa) {
+    int lua_chon = -1;
+    do {
+        cout << "*****Xem thong tin*****" << endl;
+        cout << "0. Quay lai" << endl;
+        cout << "1. Xem danh sach nhan vien" << endl;
+        cout << "2. Xem danh sach khach hang" << endl;
+        cout << "3. Xem danh sach hang hoa" << endl;
+        cout << "Nhap lua chon: ";
+        cin >> lua_chon;
+        switch (lua_chon) {
+            case 1:
+                show_dsnv(danh_sach_nhan_vien);
+                break;
+            case 2:
+                show_dskh(danh_sach_khach_hang);
+                break;
+            case 3:
+                show_dshh(danh_sach_hang_hoa);
+                break;
+        }
+    } while (lua_chon != 0);
+}
 
+void do_selection_5_1(vector<KhachHang> danh_sach_khach_hang) {
+    for (int i = 0; i < danh_sach_khach_hang.size(); i++) {
+        if (danh_sach_khach_hang[i].get_so_tien_da_chi() > 5000) {
+            danh_sach_khach_hang[i].xuat();
+        }
+    }
+}
+
+void do_selection_5_2(vector<NhanVien> danh_sach_nhan_vien) {
+    for (int i = 0; i < danh_sach_nhan_vien.size(); i++) {
+        if (danh_sach_nhan_vien[i].get_luong() > 5000) {
+            danh_sach_nhan_vien[i].xuat();
+        }
+    }
+}
+
+void do_selection_5_3(vector<HangHoa> danh_sach_hang_hoa) {
+    for (int i = 0; i < danh_sach_hang_hoa.size(); i++) {
+        if (danh_sach_hang_hoa[i].get_so_luong() < 10) {
+            danh_sach_hang_hoa[i].xuat();
+        }
+    }
+}
+
+void do_selection_5_4() {
+    
+}
+
+void do_selection_5(vector<NhanVien> danh_sach_nhan_vien, 
+                    vector<KhachHang> danh_sach_khach_hang,
+                    vector<HangHoa> danh_sach_hang_hoa) {
+    int lua_chon = -1;
+    do {
+        cout << "*****Hoat dong thong ke*****" << endl;
+        cout << "0. Quay lai" << endl;
+        cout << "1. Xem thong tin khach hang co so tien da chi lon hon 5 trieu" << endl;
+        cout << "2. Xem thong tin nhan vien co muc luong lon hon 5 trieu" << endl;
+        cout << "3. Xem thong tin hang hoa trong kho co so luong nho hon 10" << endl;
+        cout << "4. Xem hoat dong tai chinh" << endl;
+        cout << "Nhap lua chon: ";
+        cin >> lua_chon;
+        switch (lua_chon) {
+            case 1:
+                do_selection_5_1(danh_sach_khach_hang);
+                break;
+            case 2:
+                do_selection_5_2(danh_sach_nhan_vien);
+                break;
+            case 3:
+                do_selection_5_3(danh_sach_hang_hoa);
+                break;
+            case 4:
+                do_selection_5_4();
+                break;
+        }
+    } while (lua_chon != 0);
 }
 
 void update_dshh(fstream &data_hang_hoa, vector<HangHoa> &danh_sach_hang_hoa) {
@@ -291,7 +373,7 @@ int main()
         cout << "1. Ban hang (in hoa don cho khach hang)" << endl;
         cout << "2. Nhap hang (in phieu nhap hang cho nha cung cap)" << endl;
         cout << "3. Them/sua/xoa thong tin nhan vien/khach hang" << endl;
-        cout << "4. Xem danh sach nhan vien/khach hang/hang hoa/hoa don/phieu nhap hang" << endl;
+        cout << "4. Xem danh sach nhan vien/khach hang/hang hoa" << endl;
         cout << "5. Hoat dong thong ke (cho nha quan tri)" << endl;
         cout << "Nhap lua chon: ";
         cin >> lua_chon;
@@ -310,10 +392,18 @@ int main()
                 update_dskh(data_khach_hang, danh_sach_khach_hang);
                 break;
             case 4:
-                do_selection_4();
+                do_selection_4(
+                    danh_sach_nhan_vien,
+                    danh_sach_khach_hang,
+                    danh_sach_hang_hoa
+                );
                 break;
             case 5:
-                do_selection_5();
+                do_selection_5(
+                    danh_sach_nhan_vien,
+                    danh_sach_khach_hang,
+                    danh_sach_hang_hoa
+                );
                 break;
         }
     } while (lua_chon != 0);
