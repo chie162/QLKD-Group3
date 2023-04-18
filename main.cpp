@@ -13,6 +13,13 @@
 
 using namespace std;
 
+fstream data_doanh_thu("data_doanh_thu.txt", ios::in | ios::out);
+double doanh_thu = 0;
+fstream data_chi_phi("data_chi_phi.txt", ios::in | ios::out);
+double chi_phi = 0;
+fstream data_loi_nhuan("data_loi_nhuan.txt", ios::in | ios::out);
+double loi_nhuan = 0;
+
 void do_selection_1_1(HoaDon &hoa_don_moi, vector<HangHoa> &danh_sach_hang_hoa) {
     cout << left << setw(10) << "Ma HH";
 	cout << left << setw(30) << "Ten HH";
@@ -60,6 +67,10 @@ void do_selection_1(vector<HangHoa> &danh_sach_hang_hoa) {
             case 2:
                 hoa_don_moi.xuat();
                 hoa_don_moi.luu_hoa_don();
+                chi_phi = chi_phi + hoa_don_moi.get_thue();
+                data_chi_phi << chi_phi << endl;
+                doanh_thu = doanh_thu + hoa_don_moi.get_tong_tien();
+                data_doanh_thu << doanh_thu << endl;
                 break;
         }
     } while (lua_chon != 2);
@@ -84,6 +95,8 @@ void do_selection_2(vector<HangHoa> &danh_sach_hang_hoa) {
                 phieu_nhap_hang_moi.xuat();
                 phieu_nhap_hang_moi.luu_hang_hoa(danh_sach_hang_hoa);
                 phieu_nhap_hang_moi.luu_phieu_nhap_hang();
+                chi_phi = chi_phi + phieu_nhap_hang_moi.get_tong_tien();
+                data_chi_phi << chi_phi << endl;
                 break;
         }
     } while (lua_chon != 2);
@@ -262,7 +275,10 @@ void do_selection_5_3(vector<HangHoa> danh_sach_hang_hoa) {
 }
 
 void do_selection_5_4() {
-    
+    cout << "Doanh thu: " << doanh_thu * 1000 << " VND" << endl;
+    cout << "Chi phi: " << chi_phi * 1000 << " VND" << endl;
+    cout << "Loi nhuan: " << (doanh_thu - chi_phi) * 1000 << " VND" << endl;
+    data_loi_nhuan << doanh_thu - chi_phi << endl;
 }
 
 void do_selection_5(vector<NhanVien> danh_sach_nhan_vien, 
@@ -341,6 +357,14 @@ void update_dskh(fstream &data_khach_hang, vector<KhachHang> &danh_sach_khach_ha
 
 int main()
 {
+    string doanh_thu_string, loi_nhuan_string, chi_phi_string;
+    data_doanh_thu >> doanh_thu_string;
+    data_loi_nhuan >> loi_nhuan_string;
+    data_chi_phi >> chi_phi_string;
+    doanh_thu = stod(doanh_thu_string);
+    loi_nhuan = stod(loi_nhuan_string);
+    chi_phi = stod(chi_phi_string);
+
     fstream data_hang_hoa("hang_hoa.txt", ios::in | ios::out);
     vector<HangHoa> danh_sach_hang_hoa;
     string ma_hh, ten_hh, xuat_xu, gia_ban, so_luong;
@@ -364,7 +388,6 @@ int main()
         KhachHang khach_hang_moi(ma_kh, ten_kh, so_dien_thoai_kh, gioi_tinh_kh, ngay_sinh_kh, dia_chi_kh, ngay_dang_ky, stod(so_tien_da_chi));
         danh_sach_khach_hang.push_back(khach_hang_moi);
     }
-
 
     int lua_chon = -1;
     do {
@@ -410,5 +433,9 @@ int main()
     data_hang_hoa.close();
     data_nhan_vien.close();
     data_khach_hang.close();
+
+    data_doanh_thu.close();
+    data_chi_phi.close();
+    data_loi_nhuan.close();
     return 0;
 }

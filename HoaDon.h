@@ -25,6 +25,12 @@ class HoaDon {
 		// void xoa_hang_hoa(string ma_hang_hoa);
 		// void sua_hang_hoa(string ma_hang_hoa, HangHoa hang_hoa);
 		void luu_hoa_don();
+		double get_thue() {
+			return thue;
+		}
+		double get_tong_tien() {
+			return tong_tien;
+		}
 };
 
 HoaDon::HoaDon() {

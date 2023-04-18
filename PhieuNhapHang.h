@@ -22,6 +22,9 @@ class PhieuNhapHang {
         void them_hang_hoa();
         void luu_phieu_nhap_hang();
         void luu_hang_hoa(vector<HangHoa> &danh_sach_hang_cu);
+        double get_tong_tien() {
+            return tong_tien;
+        }
 };
 
 PhieuNhapHang::PhieuNhapHang() {
