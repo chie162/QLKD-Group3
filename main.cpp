@@ -4,6 +4,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <string.h>
 #include <sstream>
 #include "HoaDon.h"
 #include "HangHoa.h"
@@ -13,11 +14,11 @@
 
 using namespace std;
 
-fstream data_doanh_thu("data_doanh_thu.txt", ios::in | ios::out);
+fstream data_doanh_thu("doanh_thu.txt", ios::in | ios::out);
+fstream data_chi_phi("chi_phi.txt", ios::in | ios::out);
+fstream data_loi_nhuan("loi_nhuan.txt", ios::in | ios::out);
 double doanh_thu = 0;
-fstream data_chi_phi("data_chi_phi.txt", ios::in | ios::out);
 double chi_phi = 0;
-fstream data_loi_nhuan("data_loi_nhuan.txt", ios::in | ios::out);
 double loi_nhuan = 0;
 
 void do_selection_1_1(HoaDon &hoa_don_moi, vector<HangHoa> &danh_sach_hang_hoa) {
