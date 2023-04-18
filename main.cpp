@@ -90,11 +90,17 @@ void do_selection_2(vector<HangHoa> &danh_sach_hang_hoa) {
 }
 
 void show_dsnv(vector<NhanVien> danh_sach_nhan_vien) {
-
+    for (int i = 0; i < danh_sach_nhan_vien.size(); i++) {
+        danh_sach_nhan_vien[i].xuat();
+        cout << "------------------------" << endl;
+    }
 }
 
 void show_dskh(vector<KhachHang> danh_sach_khach_hang) {
-
+    for (int i = 0; i < danh_sach_khach_hang.size(); i++) {
+        danh_sach_khach_hang[i].xuat();
+        cout << "------------------------" << endl;
+    }
 }
 
 void do_selection_3_1(vector<NhanVien> &danh_sach_nhan_vien) {
@@ -104,11 +110,27 @@ void do_selection_3_1(vector<NhanVien> &danh_sach_nhan_vien) {
 }
 
 void do_selection_3_2(vector<NhanVien> &danh_sach_nhan_vien) {
-
+    cout << "Nhap id nhan vien can sua: ";
+    string id;
+    cin >> id;
+    for (int i = 0; i < danh_sach_nhan_vien.size(); i++) {
+        if (danh_sach_nhan_vien[i].get_id() == id) {
+            danh_sach_nhan_vien[i].nhap();
+            break;
+        }
+    }
 }
 
 void do_selection_3_3(vector<NhanVien> &danh_sach_nhan_vien) {
-
+    cout << "Nhap id nhan vien can xoa: ";
+    string id;
+    cin >> id;
+    for (int i = 0; i < danh_sach_nhan_vien.size(); i++) {
+        if (danh_sach_nhan_vien[i].get_id() == id) {
+            danh_sach_nhan_vien.erase(danh_sach_nhan_vien.begin() + i);
+            break;
+        }
+    }
 }
 
 void do_selection_3_4(vector<KhachHang> &danh_sach_khach_hang) {
@@ -118,11 +140,27 @@ void do_selection_3_4(vector<KhachHang> &danh_sach_khach_hang) {
 }
 
 void do_selection_3_5(vector<KhachHang> &danh_sach_khach_hang) {
-
+    cout << "Nhap id khach hang can sua: ";
+    string id;
+    cin >> id;
+    for (int i = 0; i < danh_sach_khach_hang.size(); i++) {
+        if (danh_sach_khach_hang[i].get_id() == id) {
+            danh_sach_khach_hang[i].nhap();
+            break;
+        }
+    }
 }
 
 void do_selection_3_6(vector<KhachHang> &danh_sach_khach_hang) {
-
+    cout << "Nhap id khach hang can xoa: ";
+    string id;
+    cin >> id;
+    for (int i = 0; i < danh_sach_khach_hang.size(); i++) {
+        if (danh_sach_khach_hang[i].get_id() == id) {
+            danh_sach_khach_hang.erase(danh_sach_khach_hang.begin() + i);
+            break;
+        }
+    }
 }
 
 void do_selection_3(vector<NhanVien> &danh_sach_nhan_vien, vector<KhachHang> &danh_sach_khach_hang) {
