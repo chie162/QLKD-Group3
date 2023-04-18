@@ -11,7 +11,16 @@ class NhanVien : public Nguoi {
         double luong;
     public:
         NhanVien();
-        NhanVien(string ngay_vao_lam, double luong);
+        NhanVien(
+            string id, 
+            string ho_ten, 
+            string sdt, 
+            string gioi_tinh, 
+            string ngay_sinh, 
+            string dia_chi, 
+            string ngay_vao_lam, 
+            double luong
+        );
         ~NhanVien();
 
         void nhap();
@@ -29,7 +38,16 @@ NhanVien::NhanVien() : Nguoi() {
     luong = 0;
 }
 
-NhanVien::NhanVien(string ngay_vao_lam, double luong) : Nguoi(id, ho_ten, sdt, gioi_tinh, dia_chi, ngay_sinh) {
+NhanVien::NhanVien(
+            string id, 
+            string ho_ten, 
+            string sdt, 
+            string gioi_tinh, 
+            string ngay_sinh, 
+            string dia_chi, 
+            string ngay_vao_lam, 
+            double luong
+        ) : Nguoi(id, ho_ten, sdt, gioi_tinh, ngay_sinh, dia_chi) {
     this->ngay_vao_lam = ngay_vao_lam;
     this->luong = luong;
 }

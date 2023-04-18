@@ -11,8 +11,8 @@ class Nguoi {
         string ho_ten;
         string sdt;
         string gioi_tinh;
-        string dia_chi;
         string ngay_sinh;
+        string dia_chi;
     public:
         Nguoi();
         Nguoi(string id, string ho_ten, string sdt, string gioi_tinh, string dia_chi, string ngay_sinh);

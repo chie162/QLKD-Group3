@@ -12,7 +12,16 @@ class KhachHang : public Nguoi {
         double so_tien_da_chi;
     public:
         KhachHang();
-        KhachHang(string ngay_dang_ky, double so_tien_da_chi);
+        KhachHang(
+            string id, 
+            string ho_ten, 
+            string sdt, 
+            string gioi_tinh, 
+            string ngay_sinh, 
+            string dia_chi, 
+            string ngay_dang_ky, 
+            double so_tien_da_chi
+        );
         ~KhachHang();
 
         void nhap();
@@ -30,7 +39,16 @@ KhachHang::KhachHang() : Nguoi() {
     so_tien_da_chi = 0;
 }
 
-KhachHang::KhachHang(string ngay_dang_ky, double so_tien_da_chi) : Nguoi(id, ho_ten, sdt, gioi_tinh, dia_chi, ngay_sinh) {
+KhachHang::KhachHang(
+            string id, 
+            string ho_ten, 
+            string sdt, 
+            string gioi_tinh, 
+            string ngay_sinh,
+            string dia_chi, 
+            string ngay_dang_ky, 
+            double so_tien_da_chi
+        ) : Nguoi(id, ho_ten, sdt, gioi_tinh, ngay_sinh, dia_chi) {
     this->ngay_dang_ky = ngay_dang_ky;
     this->so_tien_da_chi = so_tien_da_chi;
 }
