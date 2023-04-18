@@ -294,7 +294,11 @@ void do_selection_5_4() {
     cout << "Doanh thu: " << doanh_thu * 1000 << " VND" << endl;
     cout << "Chi phi: " << chi_phi * 1000 << " VND" << endl;
     cout << "Loi nhuan: " << (doanh_thu - chi_phi) * 1000 << " VND" << endl;
+    data_loi_nhuan.close();
+    data_loi_nhuan.open("loi_nhuan.txt", ios::out);
     data_loi_nhuan << doanh_thu - chi_phi << endl;
+    data_loi_nhuan.close();
+    data_loi_nhuan.open("loi_nhuan.txt", ios::in | ios::out);
 }
 
 void do_selection_5(vector<NhanVien> danh_sach_nhan_vien, 
