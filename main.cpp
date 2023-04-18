@@ -178,7 +178,7 @@ void do_selection_3(vector<NhanVien> &danh_sach_nhan_vien, vector<KhachHang> &da
         cin >> lua_chon;
         switch (lua_chon) {
             case 1:
-                show_dsnv(danh_sach_nhan_vien);
+                // show_dsnv(danh_sach_nhan_vien);
                 do_selection_3_1(danh_sach_nhan_vien);
                 break;
             case 2:
@@ -190,7 +190,7 @@ void do_selection_3(vector<NhanVien> &danh_sach_nhan_vien, vector<KhachHang> &da
                 do_selection_3_3(danh_sach_nhan_vien);
                 break;
             case 4:
-                show_dskh(danh_sach_khach_hang);
+                // show_dskh(danh_sach_khach_hang);
                 do_selection_3_4(danh_sach_khach_hang);
                 break;
             case 5:
