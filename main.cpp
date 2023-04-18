@@ -68,10 +68,20 @@ void do_selection_1(vector<HangHoa> &danh_sach_hang_hoa) {
             case 2:
                 hoa_don_moi.xuat();
                 hoa_don_moi.luu_hoa_don();
+
                 chi_phi = chi_phi + hoa_don_moi.get_thue();
+                data_chi_phi.close();
+                data_chi_phi.open("chi_phi.txt", ios::out);
                 data_chi_phi << chi_phi << endl;
+                data_chi_phi.close();
+                data_chi_phi.open("chi_phi.txt", ios::in | ios::out);
+
                 doanh_thu = doanh_thu + hoa_don_moi.get_tong_tien();
+                data_doanh_thu.close();
+                data_doanh_thu.open("doanh_thu.txt", ios::out);
                 data_doanh_thu << doanh_thu << endl;
+                data_doanh_thu.close();
+                data_doanh_thu.open("doanh_thu.txt", ios::in | ios::out);
                 break;
         }
     } while (lua_chon != 2);
@@ -96,8 +106,13 @@ void do_selection_2(vector<HangHoa> &danh_sach_hang_hoa) {
                 phieu_nhap_hang_moi.xuat();
                 phieu_nhap_hang_moi.luu_hang_hoa(danh_sach_hang_hoa);
                 phieu_nhap_hang_moi.luu_phieu_nhap_hang();
+
                 chi_phi = chi_phi + phieu_nhap_hang_moi.get_tong_tien();
+                data_chi_phi.close();
+                data_chi_phi.open("chi_phi.txt", ios::out);
                 data_chi_phi << chi_phi << endl;
+                data_chi_phi.close();
+                data_chi_phi.open("chi_phi.txt", ios::in | ios::out);
                 break;
         }
     } while (lua_chon != 2);
