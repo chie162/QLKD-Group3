@@ -82,6 +82,14 @@ void do_selection_1(vector<HangHoa> &danh_sach_hang_hoa) {
                 data_doanh_thu << doanh_thu << endl;
                 data_doanh_thu.close();
                 data_doanh_thu.open("doanh_thu.txt", ios::in | ios::out);
+
+                data_loi_nhuan.close();
+                data_loi_nhuan.open("loi_nhuan.txt", ios::out);
+                loi_nhuan = doanh_thu - chi_phi;
+                data_loi_nhuan << loi_nhuan << endl;
+                data_loi_nhuan.close();
+                data_loi_nhuan.open("loi_nhuan.txt", ios::in | ios::out);
+
                 break;
         }
     } while (lua_chon != 2);
@@ -113,6 +121,13 @@ void do_selection_2(vector<HangHoa> &danh_sach_hang_hoa) {
                 data_chi_phi << chi_phi << endl;
                 data_chi_phi.close();
                 data_chi_phi.open("chi_phi.txt", ios::in | ios::out);
+
+                data_loi_nhuan.close();
+                data_loi_nhuan.open("loi_nhuan.txt", ios::out);
+                loi_nhuan = doanh_thu - chi_phi;
+                data_loi_nhuan << loi_nhuan << endl;
+                data_loi_nhuan.close();
+                data_loi_nhuan.open("loi_nhuan.txt", ios::in | ios::out);
                 break;
         }
     } while (lua_chon != 2);
@@ -292,7 +307,19 @@ void do_selection_5_3(vector<HangHoa> danh_sach_hang_hoa) {
 
 void do_selection_5_4() {
     cout << "Doanh thu: " << doanh_thu * 1000 << " VND" << endl;
+    data_doanh_thu.close();
+    data_doanh_thu.open("doanh_thu.txt", ios::out);
+    data_doanh_thu << doanh_thu << endl;
+    data_doanh_thu.close();
+    data_doanh_thu.open("doanh_thu.txt", ios::in | ios::out);
+
     cout << "Chi phi: " << chi_phi * 1000 << " VND" << endl;
+    data_chi_phi.close();
+    data_chi_phi.open("chi_phi.txt", ios::out);
+    data_chi_phi << chi_phi << endl;
+    data_chi_phi.close();
+    data_chi_phi.open("chi_phi.txt", ios::in | ios::out);
+
     cout << "Loi nhuan: " << (doanh_thu - chi_phi) * 1000 << " VND" << endl;
     data_loi_nhuan.close();
     data_loi_nhuan.open("loi_nhuan.txt", ios::out);
