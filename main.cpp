@@ -56,6 +56,7 @@ void do_selection_1(vector<HangHoa> &danh_sach_hang_hoa) {
     HoaDon hoa_don_moi;
     hoa_don_moi.nhap();
     do {
+        system("clear");
         cout << "*****Ban hang*****" << endl;
         cout << "1. Nhap ma hang - so luong hang" << endl;
         cout << "2. Xac nhan hoa don" << endl;
@@ -63,9 +64,11 @@ void do_selection_1(vector<HangHoa> &danh_sach_hang_hoa) {
         cin >> lua_chon;
         switch (lua_chon) {
             case 1:
+                system("clear");
                 do_selection_1_1(hoa_don_moi, danh_sach_hang_hoa);
                 break;
             case 2:
+                system("clear");
                 hoa_don_moi.xuat();
                 hoa_don_moi.luu_hoa_don();
 
@@ -100,6 +103,7 @@ void do_selection_2(vector<HangHoa> &danh_sach_hang_hoa) {
     PhieuNhapHang phieu_nhap_hang_moi;
     phieu_nhap_hang_moi.nhap();
     do {
+        system("clear");
         phieu_nhap_hang_moi.xuat();
         cout << "*****Nhap hang*****" << endl;
         cout << "1. Nhap hang" << endl;
@@ -108,9 +112,11 @@ void do_selection_2(vector<HangHoa> &danh_sach_hang_hoa) {
         cin >> lua_chon;
         switch (lua_chon) {
             case 1:
+                system("clear");
                 phieu_nhap_hang_moi.them_hang_hoa();
                 break;
             case 2:
+                system("clear");
                 phieu_nhap_hang_moi.xuat();
                 phieu_nhap_hang_moi.luu_hang_hoa(danh_sach_hang_hoa);
                 phieu_nhap_hang_moi.luu_phieu_nhap_hang();
@@ -210,6 +216,7 @@ void do_selection_3_6(vector<KhachHang> &danh_sach_khach_hang) {
 void do_selection_3(vector<NhanVien> &danh_sach_nhan_vien, vector<KhachHang> &danh_sach_khach_hang) {
     int lua_chon = -1;
     do {
+        system("clear");
         cout << "*****Them, sua, xoa thong tin nhan vien, khach hang*****" << endl;
         cout << "0. Quay lai" << endl;
         cout << "1. Them nhan vien" << endl;
@@ -222,26 +229,32 @@ void do_selection_3(vector<NhanVien> &danh_sach_nhan_vien, vector<KhachHang> &da
         cin >> lua_chon;
         switch (lua_chon) {
             case 1:
+                system("clear");
                 // show_dsnv(danh_sach_nhan_vien);
                 do_selection_3_1(danh_sach_nhan_vien);
                 break;
             case 2:
+                system("clear");
                 show_dsnv(danh_sach_nhan_vien);
                 do_selection_3_2(danh_sach_nhan_vien);
                 break;
             case 3:
+                system("clear");
                 show_dsnv(danh_sach_nhan_vien);
                 do_selection_3_3(danh_sach_nhan_vien);
                 break;
             case 4:
+                system("clear");
                 // show_dskh(danh_sach_khach_hang);
                 do_selection_3_4(danh_sach_khach_hang);
                 break;
             case 5:
+                system("clear");
                 show_dskh(danh_sach_khach_hang);
                 do_selection_3_5(danh_sach_khach_hang);
                 break;
             case 6:
+                system("clear");
                 show_dskh(danh_sach_khach_hang);
                 do_selection_3_6(danh_sach_khach_hang);
                 break;
@@ -260,6 +273,7 @@ void do_selection_4(vector<NhanVien> danh_sach_nhan_vien,
                     vector<HangHoa> danh_sach_hang_hoa) {
     int lua_chon = -1;
     do {
+        system("clear");
         cout << "*****Xem thong tin*****" << endl;
         cout << "0. Quay lai" << endl;
         cout << "1. Xem danh sach nhan vien" << endl;
@@ -269,12 +283,15 @@ void do_selection_4(vector<NhanVien> danh_sach_nhan_vien,
         cin >> lua_chon;
         switch (lua_chon) {
             case 1:
+                system("clear");
                 show_dsnv(danh_sach_nhan_vien);
                 break;
             case 2:
+                system("clear");
                 show_dskh(danh_sach_khach_hang);
                 break;
             case 3:
+                system("clear");
                 show_dshh(danh_sach_hang_hoa);
                 break;
         }
@@ -333,6 +350,7 @@ void do_selection_5(vector<NhanVien> danh_sach_nhan_vien,
                     vector<HangHoa> danh_sach_hang_hoa) {
     int lua_chon = -1;
     do {
+        system("clear");
         cout << "*****Hoat dong thong ke*****" << endl;
         cout << "0. Quay lai" << endl;
         cout << "1. Xem thong tin khach hang co so tien da chi lon hon 5 trieu" << endl;
@@ -343,15 +361,19 @@ void do_selection_5(vector<NhanVien> danh_sach_nhan_vien,
         cin >> lua_chon;
         switch (lua_chon) {
             case 1:
+                system("clear");
                 do_selection_5_1(danh_sach_khach_hang);
                 break;
             case 2:
+                system("clear");
                 do_selection_5_2(danh_sach_nhan_vien);
                 break;
             case 3:
+                system("clear");
                 do_selection_5_3(danh_sach_hang_hoa);
                 break;
             case 4:
+                system("clear");
                 do_selection_5_4();
                 break;
         }
@@ -438,6 +460,7 @@ int main()
 
     int lua_chon = -1;
     do {
+        system("clear");
         cout << "*****Chuong trinh quan ly kinh doanh*****" << endl;
         cout << "0. Thoat chuong trinh" << endl;
         cout << "1. Ban hang (in hoa don cho khach hang)" << endl;
