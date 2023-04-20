@@ -1,0 +1,9 @@
+Ma hoa don: 001
+Ngay tao: 12/12/1222
+ID khach hang: 2
+ID nhan vien: 2
+So loai san pham mua: 1
+2023001 sua-nguyen-kem-vinamilk 10 2
+Tong tien: 20000 VND
+Thue: 2000 VND
+----------------------------------------

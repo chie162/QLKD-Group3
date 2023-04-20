@@ -1,0 +1,8 @@
+Ma phieu: 001
+Ngay tao: 12/12/1222
+Ten nha cung cap: chi
+Danh sach hang nhap: 
+2023001 sua vietnam 12 20
+2023003 2 2 2 2
+Tong tien: 244
+----------------------------------------

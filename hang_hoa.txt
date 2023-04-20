@@ -1,0 +1,10 @@
+2023001 sua-nguyen-kem-vinamilk vietnam 16.8 120
+2023002 kem-oc-que-vi-dau vietnam 15 18
+2023003 pho-mai-con-bo-cuoi vietnam 20 2
+2023004 bot-canh-gia-vi vietnam 4 22
+2023005 xuc-xich-tiet-trung vietnam 10 73
+2023006 banh-quy-bo phap 200 5
+2023007 keo-chanh-bac-ha vietnam 12 6
+2023008 bot-mi-da-dung vietnam 23 10
+2023009 dau-goi-dove anh 60 5
+2023010 xa-phong-cuc my 10 10
